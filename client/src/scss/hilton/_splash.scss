@@ -1,0 +1,34 @@
+.app
+{
+	width:1920px !important;
+	height:1080px !important;
+}
+
+.hilton-background
+{
+	height:100%;
+	width:100%;
+	position:relative;
+}
+
+.blue-gradient
+{
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,04a8d9+0,2989d8+100,288cbe+100 */
+	background: rgb(30,87,153); /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%, rgba(4,168,217,1) 0%, rgba(41,137,216,1) 100%, rgba(40,140,190,1) 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%,rgba(4,168,217,1) 0%,rgba(41,137,216,1) 100%,rgba(40,140,190,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, rgba(30,87,153,1) 0%,rgba(4,168,217,1) 0%,rgba(41,137,216,1) 100%,rgba(40,140,190,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#288cbe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.call-to-action
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color:white;
+	font-size:72px;
+
+	}

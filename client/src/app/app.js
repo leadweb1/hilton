@@ -27,36 +27,27 @@
           }
         }
       })
-      // .state('collection', {
-      //   url: '/collection',
-      //   templateUrl: 'src/app/collection/collection.html',
-      //   controller: 'CollectionController'
-      // })
-      .state('terms', {
-        url: '/terms',
-        templateUrl: 'src/app/terms/terms.html',
-        controller: 'TermsController'
+      .state('memory', {
+        url: '/memory',
+        templateUrl: 'src/app/memory-game/memory-game.html',
+        controller: 'MemoryController'
       })
-      .state('video/:video', {
-        url: '/video/:video',
-        templateUrl: 'src/app/video/video.html',
-        controller: 'VideoController'
+      .state('difference', {
+        url: '/difference',
+        templateUrl: 'src/app/spot-the-difference-game/spot-the-difference-game.html',
+        controller: 'DifferenceController'
       })
-      .state('videos', {
-        url: '/videos',
-        templateUrl: 'src/app/videos/videos.html',
-        controller: 'VideosController'
+      .state('hidden', {
+        url: '/hidden',
+        templateUrl: 'src/app/hidden-object-game/hidden-object-game.html',
+        controller: 'HiddenController'
       })
-      .state('thanks', {
-        url: '/thanks',
-        templateUrl: 'src/app/thanks/thanks.html',
-        controller: function () {}
+      .state('instructions', {
+        url: '/instructions/:game',
+        templateUrl: 'src/app/instructions/instructions.html',
+        controller: 'InstructionsController'
       })
-      .state('email', {
-        url: '/email',
-        templateUrl: 'src/app/email/email.html',
-        controller: 'EmailController'
-      });
+      ;
 
     hammerDefaultOptsProvider.set({
         recognizers: [
@@ -68,7 +59,8 @@
     });
     
     IdleProvider.interrupt('mousemove keydown DOMMouseScroll mousewheel mousedown onplaying touchstart touchmove scroll');
-    IdleProvider.idle(appConfig.timeout); // In seconds, default is 20min
+    // IdleProvider.idle(appConfig.timeout); // In seconds, default is 20min
+    IdleProvider.idle(99999999); 
     //IdleProvider.timeout(appConfig.timeout); // In seconds, default is 30sec
   }
 
@@ -173,12 +165,10 @@
       'angular-gestures',
       'app.splash',
       'app.home',
-      'app.email',
-      'app.terms',
-      'app.privacy',
-      'app.videos',
-      'app.video',
-      'app.customizeYourGear',
+      'app.memory',
+      'app.hidden',
+      'app.difference',
+      'app.instructions',
       'common.header',
       'common.footer',
       'common.services.data',

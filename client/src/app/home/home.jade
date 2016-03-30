@@ -1,17 +1,8 @@
-.home
-	button.menu-home.menu-button.fixed.box-shadow() MENU
-	.button-row.fixed
-		button.home-button-row(ui-sref="root.customize-your-gear", ng-click="submissionAction('click', 'action', 'home-screen_select-collection'); $event.stopPropagation();") 
-			.button-text.bold-left EXPLORE
-			.button-text THE SPRING
-			.button-text COLLECTION
-		button.home-button-row(ui-sref="root.videos", ng-click="submissionAction('click', 'action', 'home-screen_select-videos'); $event.stopPropagation();") 
-			.button-text THE SPRING
-			.button-text COLLECTION
-			.button-text.bold-left IN MOTION
-		button.home-button-row(ui-sref="root.email", ng-click="submissionAction('click', 'action', 'home-screen_select-email'); $event.stopPropagation();") 
-			.button-text
-				| GET 
-				.bold-left.sub  10% OFF
-			.button-text YOUR SPRING
-			.button-text PURCHASE
+.app
+	.hilton-background.blue-gradient
+		.col-3(ui-sref="instructions({game: 'memory'})")
+			| Memory Game
+		.col-3(ui-sref="instructions({game: 'difference'})")
+			| Spot The Difference
+		.col-3(ui-sref="instructions({game: 'hidden'})")
+			| Hidden Objects

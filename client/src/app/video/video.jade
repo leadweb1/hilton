@@ -1,6 +1,0 @@
-.video
-	button.menu-home.menu-button.fixed.z(ui-sref="root.home", ng-click="submissionAction('click', 'action', 'video-menu'); $event.stopPropagation();") MENU
-	button.menu-home.menu-button.back-button.fixed.z(ng-click="goToVideos()", ng-click="submissionAction('click', 'action', 'video-back'); $event.stopPropagation();") BACK
-	button.menu-home.menu-button.mute-button.fixed.z.audio-button#mute(ng-click="toggleAudio(); submissionAction('click', 'action', 'video-mute'); $event.stopPropagation();")
-		img.svg-audio(ng-src="{{icon}}")
-	video.video-background.fixed#video(ng-src="{{vid}}", width="1920px", height="1080px", autoplay, loop, mute)

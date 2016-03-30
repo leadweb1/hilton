@@ -1,0 +1,9 @@
+.app
+	.hilton-background.blue-gradient
+		.cards
+			.flip(ng-repeat="card in cards track by $index")
+				.card(id="{{$index}}", ng-click="cardFlipped($index)")
+					.face.front
+						| Front
+					.face.back
+						| Back
