@@ -27,63 +27,122 @@
     $scope.cards = [
       {
         img: '',
-        isFlipped: true
+        id: 0,
+        matched: false,
+        isFlipped: false,
       },
       {
         img: '',
+        id: 0,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 1,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 1,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 2,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 2,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 3,
+        matched: false,
         isFlipped: false
       },
       {
         img: '',
+        id: 3,
+        matched: false,
         isFlipped: false
       }
     ];
 
-    $scope.flipped = [];
+    $scope.flipped = 0;
+    $scope.block = false;
+    $scope.block_count = 0;
 
    $scope.cardFlipped = function(index)
    {
-    if($scope.flipped.length == 2){
+    console.log('tried to flip ' + $scope.block)
+    if($scope.flipped == 2 || $scope.cards[index].isFlipped || $scope.block){
       return;
+    }else{
+      console.log('can flip')
+      $scope.cards[index].isFlipped = true;
+      $('#'+index).addClass("flipped");
+      $scope.flipped++;
     }
-    $scope.cards[0].isFlipped = true;
-    console.log($scope.cards);
-    $('#'+index).addClass("flipped");
-    $scope.flipped.push(index);
-    $scope.cards[index].isFlipped = true;
+    
+
+    for(var i=0; i < $scope.cards.length; i++)
+    {
+      if($scope.cards[index].id == $scope.cards[i].id && $scope.cards[i].isFlipped && index != i)
+      {
+        $scope.cards[index].matched = true;
+        $scope.cards[i].matched = true;
+      }
+    }
+
+   }
+
+   $scope.timeout = function()
+   {  
+      $scope.block_count = 0;
+      setTimeout(function(){
+        $scope.block = true;
+        for(var i=0; i < $scope.cards.length; i++)
+        { 
+          if($scope.cards[i].isFlipped){
+            if($scope.cards[i].matched){
+
+            }else{
+              console.log('unflip')
+              $scope.cards[i].isFlipped = false;
+              $('#'+i).removeClass("flipped");
+            }
+            
+          }
+        }
+        $scope.flipped = 0;
+
+        //- since we have timeout and interval, 11 calls to timeout are made, wait for them all to finish and then unblock thread
+        $scope.block_count++;
+        if($scope.block_count == 11){
+          $scope.block = false;
+        }
+          
+
+        }, 1000)
    }
 
    setInterval(function(){
-    if($scope.flipped.length != 2){
+    if($scope.flipped != 2){
       return;
     }
-    setTimeout(function(){
-        for(var i=0; i < $scope.flipped.length; i++)
-        {
-          $('#'+$scope.flipped[i]).removeClass("flipped");
-        }
-        $scope.flipped = [];
-        }, 1000)
+    if(!$scope.block){
+      console.log('calling timeout')
+      $scope.timeout();
+    }
+    
+    
 
    }, 100);
    
