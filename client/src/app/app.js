@@ -42,6 +42,11 @@
         templateUrl: 'src/app/hidden-object-game/hidden-object-game.html',
         controller: 'HiddenController'
       })
+      .state('win', {
+        url: '/win',
+        templateUrl: 'src/app/win/win.html',
+        controller: 'WinController'
+      })
       .state('instructions', {
         url: '/instructions/:game',
         templateUrl: 'src/app/instructions/instructions.html',
@@ -163,6 +168,7 @@
       'ngAnimate',
       'ngIdle',
       'angular-gestures',
+      'app.win',
       'app.splash',
       'app.home',
       'app.memory',

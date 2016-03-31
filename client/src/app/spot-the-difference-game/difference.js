@@ -24,7 +24,6 @@
    */
   function DifferenceController() {
     
-   console.log("i am here")
    
   }
 

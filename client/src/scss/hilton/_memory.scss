@@ -1,9 +1,34 @@
+$card-height: 400px;
+$card-width: 275px;
+$card-padding: 20px;
+$cards-width: calc((#{$card-width}*5) + (#{$card-padding}*10));
+$border-rad: 10px;
+
+.cards
+{
+  width:$cards-width;
+  margin: 0 auto;
+  padding-top:70px;
+}
+
+.card-img
+{
+  border-radius: $border-rad;
+  height:100%;
+  width:100%;
+}
+
+//- FLIP ANIMTION
+.face
+{
+  border-radius: $border-rad;
+}
 .flip {
   -webkit-perspective: 800;
-  width: 400px;
-  height: 200px;
+  width: $card-width;
+  height: $card-height;
   position: relative;
-  margin: 0 10px;
+  margin: $card-padding $card-padding;
   display:inline-block;
 }
 .flip .card.flipped {
@@ -38,3 +63,5 @@
   color: black;
   cursor: pointer;
 }
+
+//- END FLIP ANIMATION

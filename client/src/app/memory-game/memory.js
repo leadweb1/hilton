@@ -22,7 +22,7 @@
    * @name  HomeController
    * @description Controller
    */
-  function MemoryController($scope) {
+  function MemoryController($scope, $state) {
     
     $scope.cards = [
       {
@@ -72,51 +72,103 @@
         id: 3,
         matched: false,
         isFlipped: false
+      },
+      {
+        img: '',
+        id: 4,
+        matched: false,
+        isFlipped: false
+      },
+      {
+        img: '',
+        id: 4,
+        matched: false,
+        isFlipped: false
       }
+    ];
+
+    $scope.images = [
+      '/assets/images/cards/one.png',
+      '/assets/images/cards/two.png',
+      '/assets/images/cards/three.png',
+      '/assets/images/cards/four.png',
+      ''
     ];
 
     $scope.flipped = 0;
     $scope.block = false;
     $scope.block_count = 0;
+    $scope.max_attempt = 6;
 
    $scope.cardFlipped = function(index)
    {
-    console.log('tried to flip ' + $scope.block)
-    if($scope.flipped == 2 || $scope.cards[index].isFlipped || $scope.block){
+    console.log('tried to flip ' + $scope.block);
+    if($scope.flipped === 2 || $scope.cards[index].isFlipped || $scope.block){
       return;
     }else{
-      console.log('can flip')
+      console.log('can flip');
       $scope.cards[index].isFlipped = true;
-      $('#'+index).addClass("flipped");
-      $scope.flipped++;
+      $('#'+index).addClass('flipped');
+      $scope.flipped = $scope.flipped + 1;
     }
     
 
-    for(var i=0; i < $scope.cards.length; i++)
+    for(var i=0; i < $scope.cards.length; i = i + 1)
     {
-      if($scope.cards[index].id == $scope.cards[i].id && $scope.cards[i].isFlipped && index != i)
+      if($scope.cards[index].id === $scope.cards[i].id && $scope.cards[i].isFlipped && index !== i)
       {
         $scope.cards[index].matched = true;
         $scope.cards[i].matched = true;
       }
     }
 
-   }
+   };
+
+  $scope.shuffle = function (array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+  };
+
+   $scope.init = function()
+   {
+    var id = [0,0,1,1,2,2,3,3, 4, 4];
+    id = $scope.shuffle(id);
+    for(var i=0; i < $scope.cards.length; i = i + 1)
+    {
+      $scope.cards[i].id = id[i];
+    }
+   };
 
    $scope.timeout = function()
    {  
       $scope.block_count = 0;
       setTimeout(function(){
         $scope.block = true;
-        for(var i=0; i < $scope.cards.length; i++)
+        for(var i=0; i < $scope.cards.length; i = i + 1)
         { 
           if($scope.cards[i].isFlipped){
             if($scope.cards[i].matched){
 
             }else{
-              console.log('unflip')
-              $scope.cards[i].isFlipped = false;
-              $('#'+i).removeClass("flipped");
+              if($scope.block_count === $scope.max_attempt-1){
+                $scope.cards[i].isFlipped = false;
+                $('#'+i).removeClass('flipped');
+              }
+              
             }
             
           }
@@ -124,27 +176,38 @@
         $scope.flipped = 0;
 
         //- since we have timeout and interval, 11 calls to timeout are made, wait for them all to finish and then unblock thread
-        $scope.block_count++;
-        if($scope.block_count == 11){
+        $scope.block_count = $scope.block_count + 1;
+        if($scope.block_count === $scope.max_attempt){
           $scope.block = false;
         }
-          
 
-        }, 1000)
-   }
+        }, 500);
+   };
 
    setInterval(function(){
-    if($scope.flipped != 2){
+    if($scope.flipped !== 2){
       return;
     }
     if(!$scope.block){
-      console.log('calling timeout')
+      console.log('MAX ATTEMPT LOG, calling timeout');
       $scope.timeout();
     }
-    
+
+    var matched = 0;
+    for(var i=0; i < $scope.cards.length; i = i + 1)
+    {
+      if($scope.cards[i].matched){
+        matched = matched  + 1;
+      }
+    }
+    if(matched === $scope.cards.length){
+      $state.go('root.win');
+    }
     
 
    }, 100);
+
+   $scope.init();
    
   }
 

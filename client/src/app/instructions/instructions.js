@@ -32,21 +32,21 @@
 
     $scope.goToGame = function()
     {
-      if($scope.game == 'memory')
+      if($scope.game === 'memory')
       {
-        $location.path('/memory')
-      }else if ($scope.game == 'difference')
+        $location.path('/memory');
+      }else if ($scope.game === 'difference')
       {
-        $location.path('/difference')
+        $location.path('/difference');
       }else{
-        $location.path('/hidden')
+        $location.path('/hidden');
       }
-    }
+    };
 
-    if($scope.game == 'memory')
+    if($scope.game === 'memory')
       {
         $scope.instructions = $scope.memory;
-      }else if ($scope.game == 'difference')
+      }else if ($scope.game === 'difference')
       {
         $scope.instructions = $scope.difference;
       }else{

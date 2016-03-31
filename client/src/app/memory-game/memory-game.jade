@@ -4,6 +4,6 @@
 			.flip(ng-repeat="card in cards track by $index")
 				.card(id="{{$index}}", ng-click="cardFlipped($index)")
 					.face.front
-						| Front
+						img.card-img(src="/assets/images/cards/front.png")
 					.face.back
-						| Back
+						img.card-img(ng-src="{{images[card.id]}}")

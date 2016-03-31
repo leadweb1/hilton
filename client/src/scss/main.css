@@ -2495,12 +2495,25 @@ and open the template in the editor.
             font-size: 1.2em;
             padding-left: 20px; }
 
+.cards {
+  width: calc((275px*5) + (20px*10));
+  margin: 0 auto;
+  padding-top: 70px; }
+
+.card-img {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%; }
+
+.face {
+  border-radius: 10px; }
+
 .flip {
   -webkit-perspective: 800;
-  width: 400px;
-  height: 200px;
+  width: 275px;
+  height: 400px;
   position: relative;
-  margin: 0 10px;
+  margin: 20px 20px;
   display: inline-block; }
 
 .flip .card.flipped {
