@@ -1,0 +1,10 @@
+<div class="pure-g island home">
+    <div ng-repeat="section in filteredSections = (data.content.sections| filterDisabledSections)" class="pure-u-lg-1-{{ filteredSections.length}} island section" ng-class="{ 'faded': activeSection >= 0 && $index != activeSection }" ng-click="submissionAction('click', 'action', 'home_open-menu_'+section.name); $event.stopPropagation();">
+        <div ng-if="section.sections" ng-click="selectSection($index)" class="{{section.name}}">
+            <div ng-include="contentTemplate"></div>
+        </div>
+        <div ng-if="!section.sections" ui-sref="{{section.route}}" class="{{section.name}}">
+            <div ng-include="contentTemplate"></div>
+        </div>
+    </div>
+</div>

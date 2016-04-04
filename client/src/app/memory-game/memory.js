@@ -23,6 +23,9 @@
    * @description Controller
    */
   function MemoryController($scope, $state) {
+
+    $scope.game_prompt = 'MEMORY GAME';
+    $scope.instructions = 'Flip the cards to find all the matching pairs.';
     
     $scope.cards = [
       {
@@ -88,22 +91,24 @@
     ];
 
     $scope.images = [
-      '/assets/images/cards/one.png',
-      '/assets/images/cards/two.png',
-      '/assets/images/cards/three.png',
-      '/assets/images/cards/four.png',
+      'assets/images/cards/one.png',
+      'assets/images/cards/two.png',
+      'assets/images/cards/three.png',
+      'assets/images/cards/four.png',
       ''
     ];
 
     $scope.flipped = 0;
-    $scope.block = false;
-    $scope.block_count = 0;
-    $scope.max_attempt = 6;
+
+    $scope.toggleVisible = function()
+    {
+      console.log('toggle')
+      $('#visible').toggleClass('hidden')
+    }
 
    $scope.cardFlipped = function(index)
    {
-    console.log('tried to flip ' + $scope.block);
-    if($scope.flipped === 2 || $scope.cards[index].isFlipped || $scope.block){
+    if($scope.flipped === 2 || $scope.cards[index].isFlipped){
       return;
     }else{
       console.log('can flip');
@@ -155,43 +160,30 @@
 
    $scope.timeout = function()
    {  
-      $scope.block_count = 0;
       setTimeout(function(){
-        $scope.block = true;
         for(var i=0; i < $scope.cards.length; i = i + 1)
         { 
           if($scope.cards[i].isFlipped){
             if($scope.cards[i].matched){
-
             }else{
-              if($scope.block_count === $scope.max_attempt-1){
                 $scope.cards[i].isFlipped = false;
                 $('#'+i).removeClass('flipped');
-              }
-              
             }
             
           }
         }
         $scope.flipped = 0;
 
-        //- since we have timeout and interval, 11 calls to timeout are made, wait for them all to finish and then unblock thread
-        $scope.block_count = $scope.block_count + 1;
-        if($scope.block_count === $scope.max_attempt){
-          $scope.block = false;
-        }
-
         }, 500);
    };
 
    setInterval(function(){
+    console.log('interval');
     if($scope.flipped !== 2){
       return;
     }
-    if(!$scope.block){
       console.log('MAX ATTEMPT LOG, calling timeout');
       $scope.timeout();
-    }
 
     var matched = 0;
     for(var i=0; i < $scope.cards.length; i = i + 1)

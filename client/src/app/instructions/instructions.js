@@ -26,9 +26,11 @@
 
     $scope.game = $stateParams.game;
     $scope.instructions = '';
-    $scope.memory = 'Instructions For the Memory Game';
-    $scope.difference = 'Instructions for the Difference Game';
-    $scope.hidden = 'Instructions for the Hidden game';
+    $scope.memory = 'Flip the cards to find all the matching pairs';
+    $scope.difference = 'Tap all the differences between the two photos';
+    $scope.hidden = 'Tap all the hidden objects in the image';
+
+    $scope.game_prompt = "MEMORY GAME";
 
     $scope.goToGame = function()
     {
@@ -49,8 +51,10 @@
       }else if ($scope.game === 'difference')
       {
         $scope.instructions = $scope.difference;
+        $scope.game_prompt = 'SPOT THE DIFFERENCE'
       }else{
         $scope.instructions = $scope.hidden;
+        $scope.game_prompt = 'FIND THE HIDDEN THINGS'
       }
        
   }

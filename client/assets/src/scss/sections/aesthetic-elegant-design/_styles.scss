@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-Nov-2015, 12:20:37 PM
+    Author     : christophefaribault
+*/
+
+.l-page {
+    &.island {
+        .aesthetic-elegant-design {
+            .section-nav {
+                background: url('../1-aesthetic-elegant/ae_sidebar_bg-01.jpg') no-repeat top center;
+                background-size: 100%;
+            }
+
+            &.stylish-smart-gear {
+                position: relative;
+
+                .model {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: inherit;
+
+                    .experience {
+                        .title {
+                            font-size: 46px;
+                            text-align: center;
+                        }
+                        .color {
+                            //position: absolute;
+                            top: 50px;
+                            left: 0;
+                            width: 100%;
+
+                            .watch-360 {
+                                width: 50%;
+                                height: 600px;
+                                position: relative;
+
+                                .threesixty {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    margin-left: -300px;
+                                }
+                            }
+
+                            .arrow {
+                                //margin: 225px 0 0 0;
+                                position: relative;
+
+                                img {
+                                    position: absolute;
+                                    top: 50%;
+                                    margin-top: -25%;
+
+                                    &.left {
+                                        //margin-left: 215px;
+                                        right: 0;
+                                    }
+                                    &.right {
+                                        //margin-right: 215px;
+                                        left: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        .color-nav {
+                            width: 100%;
+                            text-align: center;
+
+                            .nav-container {
+                                margin: 0 auto;
+
+                                .circle {
+                                    border-radius: 50%;
+
+                                    &.outer {
+                                        display: inline-block;
+                                        width: 75px;
+                                        height: 75px; 
+                                        position: relative;
+                                        border: 3px solid #FFF;
+
+                                        &.active {
+                                            border-color: #000;
+                                        }
+                                    }
+                                    &.inner {
+                                        width: 69px;
+                                        height: 69px;
+                                        border: 3px solid #FFF;
+                                        position: absolute;
+                                        top: 0px;
+                                        left: 0px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .nav {
+                    position: absolute;
+                    bottom: 100px;
+                    left: 0;
+                    width: 100%;
+
+                    .nav-container {
+                        .item {
+                            // Button
+                            background: #D9D9D9;
+                            border-radius: 50px;
+                            width: 90%;
+                            height: 100px;
+                            margin: 0 5%;
+
+                            // Text
+                            font-size: 30px;
+                            color: #FFFFFF;
+                            line-height: 105px;
+                            text-align: center;
+
+                            &.active {
+                                background: #919191;
+                                //padding-right: 70px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

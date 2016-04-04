@@ -1,0 +1,37 @@
+{
+  "name": "ng-coverflow",
+  "version": "0.2.0",
+  "homepage": "https://github.com/flammenmensch/ng-coverflow",
+  "authors": [
+    "Flammenmensch <maleventum@gmail.com>"
+  ],
+  "description": "Coverflow directive for AngularJS",
+  "main": "scripts/ng-coverflow.js",
+  "keywords": [
+    "coverflow",
+    "cover",
+    "flow",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.23",
+    "angular-mocks": "~1.2.23"
+  },
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "eabb0e156ddb19202c2da4145fe683aa2a53d972"
+  },
+  "_source": "git://github.com/flammenmensch/ng-coverflow.git",
+  "_target": "~0.2.0",
+  "_originalSource": "ng-coverflow"
+}

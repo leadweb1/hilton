@@ -1,0 +1,30 @@
+.hidden-background
+{
+	background-image: url('/assets/images/hidden.png');
+	background-size:cover;
+	position:fixed;
+	width:1920px;
+	height:1080px;
+}
+
+.found-col
+{
+	width:237px;
+	height: 835px;
+	margin-left: 116px;
+	margin-top:194px;
+	margin-right:0px !important;
+}
+
+.found-img
+{
+	display:inline-block;
+	margin-bottom:10px;
+	width:100%;
+}
+
+.search-image
+{
+	position:fixed;
+
+}

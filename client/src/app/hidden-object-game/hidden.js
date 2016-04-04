@@ -22,9 +22,15 @@
    * @name  HomeController
    * @description Controller
    */
-  function HiddenController() {
+  function HiddenController($scope) {
+
+    $scope.game_prompt = 'HIDDEN OBJECTS';
+    $scope.instructions = 'Find all the hidden objects to complete the game.';
     
-   console.log('i am here');
+   $scope.toggleVisible = function()
+   {
+    $('#visible').toggleClass('hidden')
+   }
    
   }
 

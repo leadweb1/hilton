@@ -2495,10 +2495,36 @@ and open the template in the editor.
             font-size: 1.2em;
             padding-left: 20px; }
 
+.visible {
+  opacity: 1; }
+
+.hidden {
+  opacity: 0; }
+
+.fixed-instruction {
+  position: fixed;
+  z-index: 20;
+  width: 1920px !important;
+  height: 1080px !important; }
+
+.instructions-back {
+  width: 1920px !important;
+  height: 1080px !important;
+  position: fixed;
+  z-index: 10;
+  background-color: #008FBB;
+  opacity: 0.7; }
+
+.top-right {
+  left: 1650px !important; }
+
+.memory-background {
+  background-image: url("/assets/images/memory.png"); }
+
 .cards {
-  width: calc((275px*5) + (20px*10));
+  width: calc((270px*5) + (18px*10));
   margin: 0 auto;
-  padding-top: 70px; }
+  padding-top: 200px; }
 
 .card-img {
   border-radius: 10px;
@@ -2510,10 +2536,10 @@ and open the template in the editor.
 
 .flip {
   -webkit-perspective: 800;
-  width: 275px;
-  height: 400px;
+  width: 270px;
+  height: 365px;
   position: relative;
-  margin: 20px 20px;
+  margin: 15px 18px;
   display: inline-block; }
 
 .flip .card.flipped {
@@ -2548,14 +2574,19 @@ and open the template in the editor.
   color: black;
   cursor: pointer; }
 
+.card-text {
+  font-size: 12px; }
+
 .app {
   width: 1920px !important;
-  height: 1080px !important; }
+  height: 1080px !important;
+  overflow: hidden; }
 
 .hilton-background {
   height: 100%;
   width: 100%;
-  position: relative; }
+  position: relative;
+  background-size: cover; }
 
 .blue-gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,04a8d9+0,2989d8+100,288cbe+100 */
@@ -2572,16 +2603,121 @@ and open the template in the editor.
 
 .call-to-action {
   position: absolute;
-  top: 50%;
+  top: 63%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 72px; }
+  font-size: 72px;
+  border-style: solid;
+  border-width: 15px;
+  font-size: 110px;
+  letter-spacing: 0.01em;
+  padding: 55px 110px;
+  padding-bottom: 10px; }
+
+.outline {
+  border-style: solid; }
+
+.instructions-background {
+  background-image: url("../assets/images/instructions.png");
+  background-size: cover; }
+
+.fixed-top-left-home-btn {
+  position: fixed;
+  left: 74px;
+  top: 75px;
+  width: 195px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #00A4D4;
+  color: white;
+  padding: 20px 30px;
+  font-size: 30px;
+  cursor: pointer; }
+
+.white-copy {
+  color: white;
+  text-align: center; }
+
+.instructions-title {
+  font-size: 120px;
+  padding-top: 460px;
+  letter-spacing: 6px;
+  line-height: 100px; }
+
+.instructions {
+  font-size: 48px;
+  letter-spacing: 5.5px;
+  width: 1300px;
+  margin: 0 auto; }
+
+.go-to-game-btn {
+  border-style: solid;
+  width: 400px;
+  margin: 0px auto;
+  border-width: 9px;
+  padding: 45px 0px;
+  padding-bottom: 14px;
+  margin-top: 56px;
+  line-height: 70px;
+  letter-spacing: 2px;
+  font-size: 80px; }
+
+.difference-background {
+  background-image: url("/assets/images/difference.png");
+  background-size: cover;
+  position: fixed;
+  width: 1920px;
+  height: 1080px; }
+
+.score {
+  text-align: center;
+  color: white;
+  border-style: solid;
+  border-width: 8px;
+  width: 290px;
+  margin: 0 auto;
+  margin-top: 76px;
+  font-size: 84px;
+  line-height: 100px;
+  letter-spacing: 10px;
+  padding-top: 15px; }
+
+.picture {
+  margin-top: 50px; }
+
+.left-picture {
+  margin-left: 69px;
+  margin-right: 40px; }
+
+.hidden-background {
+  background-image: url("/assets/images/hidden.png");
+  background-size: cover;
+  position: fixed;
+  width: 1920px;
+  height: 1080px; }
+
+.found-col {
+  width: 237px;
+  height: 835px;
+  margin-left: 116px;
+  margin-top: 194px;
+  margin-right: 0px !important; }
+
+.found-img {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%; }
+
+.search-image {
+  position: fixed; }
 
 .col-3 {
   width: 33.333%;
   height: 100%;
-  display: inline-block;
-  border-style: solid; }
+  display: inline-block; }
+
+.home-background {
+  background-image: url("../assets/images/home.png"); }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,62 @@
+$btn-color:#00A4D4;
+
+.instructions-background
+{
+	background-image: url('../assets/images/instructions.png');
+	background-size:cover;
+}
+
+.fixed-top-left-home-btn
+{
+	position:fixed;
+	left:74px;
+	top:75px;
+	width:195px;
+	height:80px;
+	border-radius:10px;
+	background-color:$btn-color;
+
+	color:white;
+	padding:20px 30px;
+
+	font-size:30px;
+	cursor:pointer;
+
+}
+
+.white-copy
+{
+	color:white;
+	text-align: center;
+}
+
+.instructions-title
+{
+	font-size: 120px;
+	padding-top:460px;
+	letter-spacing: 6px;
+	line-height:100px;
+}
+
+.instructions
+{
+	font-size:48px;
+	letter-spacing: 5.5px;
+	width:1300px;
+	margin:0 auto;
+}
+
+.go-to-game-btn
+{
+	border-style:solid;
+	width:400px;
+	margin:0px auto;
+	border-width:9px;
+	padding: 45px 0px;
+	padding-bottom:14px;
+	margin-top:56px;
+	line-height:70px;
+	letter-spacing:2px;
+
+	font-size:80px;
+}

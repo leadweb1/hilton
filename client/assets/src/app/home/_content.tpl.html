@@ -1,0 +1,10 @@
+<div class="content-wrapper">
+    <div class="title">
+        <div>{{ section.title}}</div>
+    </div>
+    <div ng-if="section.sections" ng-show="$index == activeSection" class="menu animate-show ng-hide">
+        <ul class="menu-container">
+            <li ng-repeat="section in section.sections| filterDisabledSections" class="item"><a ui-sref="{{section.route}}" ng-click="submissionAction('click', 'action', 'home_open-section_'+section.name); $event.stopPropagation();">{{section.title}} <i class="arrow fa fa-angle-right"></i></a></li>
+        </ul>
+    </div>
+</div>

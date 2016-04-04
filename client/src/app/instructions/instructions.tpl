@@ -1,0 +1,1 @@
+<div class="app"><div class="hilton-background blue-gradient"><div class="instructions-title">INSTRUCTIONS</div><div class="instructions">{{instructions}}</div><button ng-click="goToGame()" class="go-to-game-btn">TAP TO BEGIN</button><button class="back-btn"><-</button><div ui-sref="root.home" class="back-text">BACK</div></div></div>

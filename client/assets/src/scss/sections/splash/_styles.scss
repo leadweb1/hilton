@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18-Nov-2015, 7:33:55 PM
+    Author     : christophefaribault
+*/
+
+.l-page {
+    &.island {
+        .splash {
+            .title {
+                /* Touch Here to Begin: */
+                font-family: SamsungSharpSansRegular;
+                font-size: 197px;
+                color: #008CFF;
+                letter-spacing: 1.23px;
+                line-height: 245px;
+                margin: 18% auto 0;
+                width: 70%;
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+$card-height: 400px;
+$card-width: 275px;
+$card-padding: 20px;
+$cards-width: calc((#{$card-width}*5) + (#{$card-padding}*10));
+$border-rad: 10px;
+
+.cards
+{
+  width:$cards-width;
+  margin: 0 auto;
+  padding-top:70px;
+}
+
+.card-img
+{
+  border-radius: $border-rad;
+  height:100%;
+  width:100%;
+}
+
+//- FLIP ANIMTION
+.face
+{
+  border-radius: $border-rad;
+}
+.flip {
+  -webkit-perspective: 800;
+  width: $card-width;
+  height: $card-height;
+  position: relative;
+  margin: $card-padding $card-padding;
+  display:inline-block;
+}
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+}
+.flip .card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+.flip .card .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden ;
+  z-index: 2;
+  font-size: 3em;
+  text-align: center;
+  line-height: 200px;
+}
+.flip .card .front {
+  position: absolute;
+  z-index: 1;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+.flip .card .back {
+  -webkit-transform: rotatey(-180deg);
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+//- END FLIP ANIMATION
+
+.card-text
+{
+  font-size:12px;
+}

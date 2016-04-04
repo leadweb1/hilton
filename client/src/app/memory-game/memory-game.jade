@@ -1,9 +1,25 @@
 .app
+	.visible#visible
+		.instructions-back
+		.fixed-instruction
+			.fixed-top-left-home-btn(ui-sref="root.home", ng-src="/assets/images/btns/home.png") 
+				img(ng-src="/assets/images/btns/return-home.png") 
+				|  HOME 
+			.white-copy
+				.instructions-title {{game_prompt}}
+				.instructions {{instructions}}
+				.go-to-game-btn(ng-click="toggleVisible()") START!
 	.hilton-background.blue-gradient
+		.fixed-top-left-home-btn(ui-sref="root.home", ng-src="/assets/images/btns/home.png") 
+			img(ng-src="/assets/images/btns/return-home.png") 
+			|  HOME 
+		.fixed-top-left-home-btn.top-right(ng-click="toggleVisible()", ng-src="/assets/images/btns/home.png") 
+			img(ng-src="/assets/images/btns/return-home.png") 
+			|  RULES
 		.cards
 			.flip(ng-repeat="card in cards track by $index")
 				.card(id="{{$index}}", ng-click="cardFlipped($index)")
 					.face.front
-						img.card-img(src="/assets/images/cards/front.png")
+						img.card-img(src="assets/images/cards/front.png")
 					.face.back
 						img.card-img(ng-src="{{images[card.id]}}")
