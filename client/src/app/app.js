@@ -32,16 +32,6 @@
         templateUrl: 'src/app/memory-game/memory-game.html',
         controller: 'MemoryController'
       })
-      .state('difference', {
-        url: '/difference',
-        templateUrl: 'src/app/spot-the-difference-game/spot-the-difference-game.html',
-        controller: 'DifferenceController'
-      })
-      .state('hidden', {
-        url: '/hidden',
-        templateUrl: 'src/app/hidden-object-game/hidden-object-game.html',
-        controller: 'HiddenController'
-      })
       .state('win', {
         url: '/win',
         templateUrl: 'src/app/win/win.html',
@@ -170,11 +160,7 @@
       'angular-gestures',
       'app.win',
       'app.splash',
-      'app.home',
       'app.memory',
-      'app.hidden',
-      'app.difference',
-      'app.instructions',
       'common.header',
       'common.footer',
       'common.services.data',

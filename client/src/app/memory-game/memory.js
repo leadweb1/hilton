@@ -24,12 +24,63 @@
    */
   function MemoryController($scope, $state) {
 
+    var instructions = true;
+
+    $scope.card_set = 0;
+    $scope.cardImageOne = {
+        images :  [
+          'assets/images/cards/one.png',
+          'assets/images/cards/two.png',
+          'assets/images/cards/three.png',
+          'assets/images/cards/four.png',
+          ''
+        ],
+        copy : [
+          'card set one',
+          'card set one',
+          'card set one',
+          'card set one'
+        ]
+      };
+
+    $scope.cardImageTwo = {
+        images :  [
+          'assets/images/cards/one.png',
+          'assets/images/cards/two.png',
+          'assets/images/cards/three.png',
+          'assets/images/cards/four.png',
+          ''
+        ],
+        copy : [
+          'card set one',
+          'card set one',
+          'card set one',
+          'card set one'
+        ]
+    };
+
+    $scope.cardImages = [];
+    if(Math.random() < 0.5)
+    {
+      $scope.card_set = 0;
+      $scope.cardImages = $scope.cardImageOne;
+    }else{
+      $scope.card_set = 1;
+      $scope.cardImages = $scope.cardImageTwo;
+    }
+
     $scope.game_prompt = 'MEMORY GAME';
     $scope.instructions = 'Flip the cards to find all the matching pairs.';
     
+    $scope.copy = 'No Copy';
+
+    
     $scope.cards = [
       {
-        img: '',
+        img: [
+          '',
+          '',
+        ],
         id: 0,
         matched: false,
         isFlipped: false,
@@ -90,21 +141,34 @@
       }
     ];
 
-    $scope.images = [
-      'assets/images/cards/one.png',
-      'assets/images/cards/two.png',
-      'assets/images/cards/three.png',
-      'assets/images/cards/four.png',
-      ''
-    ];
-
     $scope.flipped = 0;
 
     $scope.toggleVisible = function()
     {
-      console.log('toggle')
-      $('#visible').toggleClass('hidden')
+      if(instructions){
+      $('.instructions-back').css("opacity", "0.0")
+      $('.fixed-instruction').css("opacity", "0.0")
+      setTimeout(function(){
+        $('.instructions-back').toggleClass('hidden')
+      $('.fixed-instruction').toggleClass('hidden')
+    }, 500)
+      }else{
+         $('.instructions-back').toggleClass('hidden')
+      $('.fixed-instruction').toggleClass('hidden')
+            setTimeout(function(){
+        
+            $('.instructions-back').css("opacity", "0.7")
+      $('.fixed-instruction').css("opacity", "1.0")
+        }, 10)
+
+      }
+      instructions = !instructions;
+
+      
+      // $('instructions-back').fadeTo(0);
     }
+
+
 
    $scope.cardFlipped = function(index)
    {
@@ -128,6 +192,12 @@
     }
 
    };
+
+   $scope.getImageSource = function(id)
+   {
+    console.log($scope.card_content[$scope.card_set])
+    return ($scope.card_content[$scope.card_set])[id]
+   }
 
   $scope.shuffle = function (array) {
       var currentIndex = array.length, temporaryValue, randomIndex;

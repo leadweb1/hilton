@@ -22,4 +22,6 @@
 					.face.front
 						img.card-img(src="assets/images/cards/front.png")
 					.face.back
-						img.card-img(ng-src="{{images[card.id]}}")
+						img.card-img(ng-src="{{cardImages.images[card.id]}}")
+		.copy
+			| {{copy}}

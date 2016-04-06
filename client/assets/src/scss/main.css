@@ -2548,6 +2548,9 @@ and open the template in the editor.
   color: black;
   cursor: pointer; }
 
+.card-text {
+  font-size: 12px; }
+
 .app {
   width: 1920px !important;
   height: 1080px !important; }
