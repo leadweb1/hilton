@@ -1,5 +1,17 @@
 .app
-	.hilton-background.blue-gradient
-		button() HOME
-		| Great Job!
-		button() PLAY AGAI
+	.hilton-background-image
+		.white-copy.padding
+			img(ng-src="assets/ICONS/thumbup.png")
+			.instructions-title
+				b GREAT JOB!
+			img.play-again(ng-src="assets/BUTTONS/playagain.png", ng-click="playAgain()")
+			.instructions.bold
+				b READY FOR A REAL ESCAPE?
+			.subinstructions.bold 
+				b STOP CLICKING AROUND AND START EXPLORING.
+		.fixed-top-left-home-btn(ng-click="goHome()", ng-src="assets/images/btns/home.png") 
+			img(ng-src="assets/images/btns/return-home.png") 
+			|  HOME 
+		.fixed-top-left-home-btn.top-right(ng-click="toggleVisible()", ng-src="assets/images/btns/home.png") 
+			img(ng-src="assets/images/btns/return-home.png") 
+			|  RULES

@@ -1,9 +1,9 @@
 .app
 	.hilton-background.instructions-background
-		.fixed-top-left-home-btn(ui-sref="root.home", ng-src="/assets/images/btns/home.png") 
-			img(ng-src="/assets/images/btns/return-home.png") 
+		.fixed-top-left-home-btn(ui-sref='root.home', ng-src='/assets/images/btns/home.png') 
+			img(ng-src='/assets/images/btns/return-home.png') 
 			|  HOME 
 		.white-copy
 			.instructions-title {{game_prompt}}
 			.instructions {{instructions}}
-			.go-to-game-btn(ng-click="goToGame()") START!
+			.go-to-game-btn(ng-click='goToGame()') START!

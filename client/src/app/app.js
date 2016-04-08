@@ -27,6 +27,11 @@
           }
         }
       })
+      .state('begin', {
+        url: '/begin',
+        templateUrl: 'src/app/splash/splash.html',
+        controller: 'SplashController'
+      })
       .state('memory', {
         url: '/memory',
         templateUrl: 'src/app/memory-game/memory-game.html',
@@ -54,9 +59,8 @@
     });
     
     IdleProvider.interrupt('mousemove keydown DOMMouseScroll mousewheel mousedown onplaying touchstart touchmove scroll');
-    // IdleProvider.idle(appConfig.timeout); // In seconds, default is 20min
-    IdleProvider.idle(100000000); 
-    //IdleProvider.timeout(appConfig.timeout); // In seconds, default is 30sec
+    IdleProvider.idle(appConfig.timeout); // In seconds, default is 20min
+    // IdleProvider.timeout(2); // In seconds, default is 30sec
   }
 
   function MainCtrl($log, $scope, $state, Idle) {

@@ -1,0 +1,16 @@
+Buttons:
+#03a5d1
+
+Button Shadow:
+#0A5980
+
+
+Drop Shadow on cards :
+box-shadow: 0px 0px 20px 0px rgba(0,100,129,0.60);
+
+Cards:
+border-radius: 34px;
+
+Global gradient for modal pages:
+opacity: 0.75;
+background-image: radial-gradient(center, ellipse cover, #46D3FF 1%, #007EA3 100%);

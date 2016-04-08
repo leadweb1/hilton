@@ -22,222 +22,96 @@
    * @name  HomeController
    * @description Controller
    */
-  function MemoryController($scope, $state) {
+  function MemoryController($scope, $state, cardData, $rootScope, $sce) {
 
-    var instructions = true;
+    //used to toggle view visibility
+    $scope.instructionsBool = true;
+    $scope.idleBool = false;
+    $scope.score = 0;
+    $scope.ms_timeout = 50000;
 
-    $scope.card_set = 0;
-    $scope.cardImageOne = {
-        images :  [
-          'assets/images/cards/one.png',
-          'assets/images/cards/two.png',
-          'assets/images/cards/three.png',
-          'assets/images/cards/four.png',
-          ''
-        ],
-        copy : [
-          'card set one',
-          'card set one',
-          'card set one',
-          'card set one'
-        ]
-      };
-
-    $scope.cardImageTwo = {
-        images :  [
-          'assets/images/cards/one.png',
-          'assets/images/cards/two.png',
-          'assets/images/cards/three.png',
-          'assets/images/cards/four.png',
-          ''
-        ],
-        copy : [
-          'card set one',
-          'card set one',
-          'card set one',
-          'card set one'
-        ]
-    };
-
-    $scope.cardImages = [];
-    if(Math.random() < 0.5)
-    {
-      $scope.card_set = 0;
-      $scope.cardImages = $scope.cardImageOne;
-    }else{
-      $scope.card_set = 1;
-      $scope.cardImages = $scope.cardImageTwo;
-    }
-
-    $scope.game_prompt = 'MEMORY GAME';
-    $scope.instructions = 'Flip the cards to find all the matching pairs.';
-    
-    $scope.copy = 'No Copy';
-
-    
-    $scope.cards = [
-      {
-        img: [
-          '',
-          '',
-        ],
-        id: 0,
-        matched: false,
-        isFlipped: false,
-      },
-      {
-        img: '',
-        id: 0,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 1,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 1,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 2,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 2,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 3,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 3,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 4,
-        matched: false,
-        isFlipped: false
-      },
-      {
-        img: '',
-        id: 4,
-        matched: false,
-        isFlipped: false
-      }
-    ];
-
+    // Set up card images by randomly choosing one of two sets in the service
+    $scope.cardImages = cardData.initCardSet();
+    $scope.game_prompt = cardData.gamePrompt;
+    $scope.instructions = cardData.instructions;
+    $scope.cards = cardData.initCardState;
+    $scope.copy = '';
+    // Initialize our scope flipped val to show that we start with 0 cards flipped up
     $scope.flipped = 0;
+    $rootScope.localIdle = 0;
 
+
+    // Switches the opacity and hidden attribute of the fixed instructions panel
+    // the 500 ms timeout is the same duration as the css class's 'transition-duration:0.5s'
     $scope.toggleVisible = function()
     {
-      if(instructions){
-      $('.instructions-back').css("opacity", "0.0")
-      $('.fixed-instruction').css("opacity", "0.0")
-      setTimeout(function(){
-        $('.instructions-back').toggleClass('hidden')
-      $('.fixed-instruction').toggleClass('hidden')
-    }, 500)
+      $scope.$apply();
+      console.log($scope.idleBool);
+      if($scope.instructionsBool){
+        $('.instructions-back').css('opacity', '0.0');
+        $('.fixed-instruction').css('opacity', '0.0');
+        $('.instructions-back').css('pointer-events', 'none');
+        $('.fixed-instruction').css('pointer-events', 'none');
+        setTimeout(function(){
+          $('.instructions-back').toggleClass('hidden');
+          $('.fixed-instruction').toggleClass('hidden');
+        }, 500);
       }else{
-         $('.instructions-back').toggleClass('hidden')
-      $('.fixed-instruction').toggleClass('hidden')
-            setTimeout(function(){
-        
-            $('.instructions-back').css("opacity", "0.7")
-      $('.fixed-instruction').css("opacity", "1.0")
-        }, 10)
-
+        $('.instructions-back').toggleClass('hidden');
+        $('.fixed-instruction').toggleClass('hidden');
+        setTimeout(function(){
+            $('.instructions-back').css('opacity', '0.75');
+            $('.fixed-instruction').css('opacity', '1.0');
+            $('.instructions-back').css('pointer-events', 'auto');
+            $('.fixed-instruction').css('pointer-events', 'auto');
+        }, 10);
       }
-      instructions = !instructions;
+      $scope.instructionsBool = !$scope.instructionsBool;
+      // $scope.toggleIdle();
+    };
 
-      
-      // $('instructions-back').fadeTo(0);
-    }
-
-
-
+    // called when a card is flipped by the user
    $scope.cardFlipped = function(index)
    {
-    if($scope.flipped === 2 || $scope.cards[index].isFlipped){
-      return;
-    }else{
-      console.log('can flip');
-      $scope.cards[index].isFlipped = true;
-      $('#'+index).addClass('flipped');
-      $scope.flipped = $scope.flipped + 1;
-    }
-    
+        console.log('flipped at ' + index);
+        $scope.resetIdle();
 
-    for(var i=0; i < $scope.cards.length; i = i + 1)
-    {
-      if($scope.cards[index].id === $scope.cards[i].id && $scope.cards[i].isFlipped && index !== i)
-      {
-        $scope.cards[index].matched = true;
-        $scope.cards[i].matched = true;
-      }
-    }
+        if($scope.flipped === 2 || $scope.cards[index].isFlipped){// dont allow any more cards to flip because 2 are already flipped!
+          return; 
+        }else{ // The card can, flip, animated it by adding the class and incrementing flipped
+          $scope.cards[index].isFlipped = true;
+          $('#'+index).addClass('flipped');
+          $scope.flipped = $scope.flipped + 1;
+        }
+        
 
+        for(var i=0; i < $scope.cards.length; i = i + 1)
+        {
+          if($scope.cards[index].id === $scope.cards[i].id && $scope.cards[i].isFlipped && index !== i) // if the card at [index] matches an already flipped card, then they match
+          {
+            $scope.cards[index].matched = true;
+            $scope.cards[i].matched = true;
+            $scope.copy = $sce.trustAsHtml($scope.cardImages.copy[Math.floor(i/2)]);
+            $scope.score = $scope.score + 1;
+          }
+        }
    };
 
    $scope.getImageSource = function(id)
    {
-    console.log($scope.card_content[$scope.card_set])
-    return ($scope.card_content[$scope.card_set])[id]
-   }
-
-  $scope.shuffle = function (array) {
-      var currentIndex = array.length, temporaryValue, randomIndex;
-
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-
-      return array;
-  };
-
-   $scope.init = function()
-   {
-    var id = [0,0,1,1,2,2,3,3, 4, 4];
-    id = $scope.shuffle(id);
-    for(var i=0; i < $scope.cards.length; i = i + 1)
-    {
-      $scope.cards[i].id = id[i];
-    }
+      return ($scope.cardImages[id]);
    };
 
+   //if cards are nnot matched, wait 500ms and flip them back
    $scope.timeout = function()
    {  
       setTimeout(function(){
         for(var i=0; i < $scope.cards.length; i = i + 1)
         { 
           if($scope.cards[i].isFlipped){
-            if($scope.cards[i].matched){
-            }else{
-                $scope.cards[i].isFlipped = false;
-                $('#'+i).removeClass('flipped');
+            if(!$scope.cards[i].matched){
+              $scope.cards[i].isFlipped = false;
+              $('#'+i).removeClass('flipped');
             }
             
           }
@@ -247,29 +121,82 @@
         }, 500);
    };
 
+   $scope.showCopyInstructions = function()
+   {
+    console.log('idle bool is: ' + $scope.idleBool);
+    if($scope.idleBool){
+      return false;
+    }else{
+      return true;
+    }
+   };
+   $scope.showCopyIdle = function()
+   {
+    if($scope.idleBool){
+      return true;
+    }else{
+      return false;
+    }
+   };
+
+   $scope.resetIdle = function()
+   {
+      $rootScope.localIdle = 0;
+      $scope.idleBool = false;
+   };
+
+   $rootScope.localIdleTimeout = function()
+   {
+    console.log('user has been idle for 10 seconds');
+    $scope.idleBool = true;
+    if(!$scope.instructionsBool){
+      $scope.toggleVisible();
+    }
+   };
+
+   $scope.goHome = function()
+   {
+    $state.go('begin');
+   };
+
+   $state.playAgain = function()
+   {
+    $state.go('memory;');
+   };
+
    setInterval(function(){
-    console.log('interval');
-    if($scope.flipped !== 2){
-      return;
-    }
-      console.log('MAX ATTEMPT LOG, calling timeout');
-      $scope.timeout();
 
-    var matched = 0;
-    for(var i=0; i < $scope.cards.length; i = i + 1)
-    {
-      if($scope.cards[i].matched){
-        matched = matched  + 1;
-      }
-    }
-    if(matched === $scope.cards.length){
-      $state.go('root.win');
-    }
-    
+        if($scope.instructionsBool){
+          $rootScope.localIdle = 0;
+        }else if($rootScope.localIdle >= $scope.ms_timeout){
+          $rootScope.localIdleTimeout();
+        }else{
+          $rootScope.localIdle += 100;
+        }
 
+        if($scope.flipped !== 2){
+          return;
+        }
+        
+        $scope.timeout();
+
+          var matched = 0;
+          for(var i=0; i < $scope.cards.length; i = i + 1)
+          {
+            if($scope.cards[i].matched){
+              matched = matched  + 1;
+            }
+          }
+          if(matched === $scope.cards.length){
+            setTimeout(function(){
+              $state.go('root.win');
+            }, 500);
+            
+          }
    }, 100);
 
-   $scope.init();
+   $scope.cards = cardData.init();
+   
    
   }
 

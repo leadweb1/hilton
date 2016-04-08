@@ -1,13 +1,44 @@
-$card-height: 365px;
-$card-width: 270px;
+$card-height: 325px;
+$card-width: 250px;
 $card-padding: 18px;
 $cards-width: calc((#{$card-width}*5) + (#{$card-padding}*10));
-$border-rad: 10px;
+$border-rad: 34px;
+
+.fixed-score
+{
+  width:242px;
+  height:105px;
+  margin-top:10px;
+  margin-left:254px;
+  border-style:solid;
+  border-width:9px;
+  border-color:white;
+  text-align:center;
+  font-size:75px;
+  letter-spacing: 0.15em;
+  color:white;
+  margin-right:20px !important;
+}
+
+.hilton-background-image
+{
+  height:1080px;
+  width:1920px;
+  position:relative;
+  background-image: url('/assets/BACKGROUND/background.jpg')
+}
 
 .copy
 {
-  text-align:center;
+  position:fixed;
   color:white;
+  width:1100px;
+  height:105px;
+  margin-top:-104px;
+  margin-left:550px;
+  font-size:48px;
+  line-height:55px;
+
 }
 
 .visible
@@ -32,8 +63,9 @@ $border-rad: 10px;
   width:1920px !important;
   height:1080px !important;
   position:fixed;
-  background-color:#008FBB;
-  opacity:0.7;
+  // background-color:#008FBB;
+  opacity:0.75;
+  background: -webkit-radial-gradient(center, ellipse cover, #46D3FF 1%, #007EA3 100%);
 }
 
 .top-right
@@ -64,14 +96,16 @@ $border-rad: 10px;
 .face
 {
   border-radius: $border-rad;
+  box-shadow: 0px 0px 20px 0px rgba(0,100,129,0.60);
 }
 .flip {
   -webkit-perspective: 800;
   width: $card-width;
   height: $card-height;
   position: relative;
-  margin: 15px $card-padding;
+  margin: 0px $card-padding;
   display:inline-block;
+  margin-bottom:30px;
 }
 .flip .card.flipped {
   -webkit-transform: rotatey(-180deg);

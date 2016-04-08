@@ -22,7 +22,19 @@
    * @name  SplashController
    * @description Controller
    */
-  function WinController() {
+  function WinController($state, $scope) {
+
+
+
+    $scope.goHome = function()
+    {
+      $state.go('begin');
+    };
+
+    $scope.playAgain = function()
+    {
+      $state.go('memory');
+    };
     
   }
 

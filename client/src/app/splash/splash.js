@@ -22,8 +22,13 @@
    * @name  SplashController
    * @description Controller
    */
-  function SplashController(data, $scope) {
+  function SplashController(data, $scope, $state) {
     $scope.data = data;
+
+    $scope.goToGame = function()
+    {
+      $state.go('memory');
+    };
   }
 
   angular.module('app.splash', [])
