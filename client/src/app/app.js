@@ -106,7 +106,6 @@
       }
     };
     $rootScope.submissionAction = function(field_name, field_value, field_extra) {
-      console.log(field_extra)
         if ($rootScope.submission.astral_post.sessions.length < 1) {
           $rootScope.submissionStart();
         }
