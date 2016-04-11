@@ -165,7 +165,7 @@
    };
 
    setInterval(function(){
-
+      console.log($rootScope.localIdle);
         if($scope.instructionsBool){
           $rootScope.localIdle = 0;
         }else if($rootScope.localIdle >= $scope.ms_timeout){

@@ -3,25 +3,25 @@
 		.instructions-back
 		.fixed-instruction
 			.fixed-top-left-home-btn(ng-click="goHome()", ng-src="assets/images/btns/home.png") 
-				img(ng-src="assets/images/btns/return-home.png") 
-				|  HOME
+				img(ng-src="assets/ICONS/rules.png") 
+				.inline.btn-text  HOME
 			.white-copy(ng-if="!idleBool")
 				img.instructions-title-image.padtop(ng-src="assets/ICONS/memory.png", width="160px")
 				.instructions-title
-					b {{game_prompt}}
+					b.black {{game_prompt}}
 				.instructions {{instructions}}
 				img.go-to-game-btn(ng-src="assets/BUTTONS/start.png")
 			.white-copy(ng-show="showCopyIdle()")
-				img.instructions-title-image(ng-src="assets/ICONS/clock.png")
+				img.instructions-title-image.idle-image(ng-src="assets/ICONS/clock.png")
 				.instructions Are you still there? Touch anywhere to keep playing.
-				.subinstructions The screen will go back to home in 10.
+				.subinstructions The screen will go back home in 10.
 	.hilton-background-image(ng-click="resetIdle()")
 		.fixed-top-left-home-btn(ng-click="goHome()", ng-src="assets/images/btns/home.png") 
-			img(ng-src="assets/images/btns/return-home.png") 
-			|  HOME 
+			img(ng-src="assets/ICONS/rules.png") 
+			.inline.btn-text  HOME 
 		.fixed-top-left-home-btn.top-right(ng-click="toggleVisible()", ng-src="assets/images/btns/home.png") 
-			img(ng-src="assets/images/btns/return-home.png") 
-			|  RULES
+			img.inline(ng-src="assets/ICONS/rules.png") 
+			.inline.btn-text  RULES
 		.cards
 			.flip(ng-repeat="card in cards track by $index")
 				.card(id="{{$index}}", ng-click="cardFlipped($index)")

@@ -2,7 +2,12 @@ $btn-color:#00A4D4;
 
 .padding
 {
-	padding-top:120px;
+	padding-top:200px;
+}
+
+.black
+{
+	font-family: 'GothamBlack' !important;
 }
 
 .bold
@@ -14,6 +19,15 @@ $btn-color:#00A4D4;
 {
 	padding: 0 0;
 	margin-top:-40px;
+	margin-bottom:-30px;
+}
+
+.win
+{
+	font-size:40px !important;
+	line-height:50px;
+	letter-spacing:1px !important;
+	font-weight: 300;
 }
 
 .instructions-background
@@ -41,6 +55,19 @@ $btn-color:#00A4D4;
 
 }
 
+.inline
+{
+	display:inline-block;
+}
+
+.btn-text
+{
+	position:fixed;
+	margin-top:7px;
+	margin-left:10px;
+	font-size:25px;
+}
+
 .padtop
 {
 	margin-top:40px;
@@ -54,10 +81,11 @@ $btn-color:#00A4D4;
 
 .instructions-title
 {
-	font-size: 120px;
+	font-size: 100px;
 	padding-top:50px;
 	letter-spacing: 6px;
 	line-height:100px;
+	margin-bottom:10px;
 }
 
 .instructions-title-image
@@ -68,17 +96,22 @@ $btn-color:#00A4D4;
 	line-height:100px;
 }
 
+.idle-image
+{
+	padding-top:180px !important;
+}
+
 .instructions
 {
 	font-size:48px;
-	letter-spacing: 5.5px;
-	width:1300px;
+	letter-spacing: 1px;
+	width:1500px;
 	margin:0 auto;
 }
 
 .subinstructions
 {
-	font-size:36px;
+	font-size:40px;
 	// letter-spacing: 5.5px;
 	width:1300px;
 	margin:0 auto;
@@ -86,13 +119,14 @@ $btn-color:#00A4D4;
 
 .go-to-game-btn
 {
-	width:400px;
+	width:550px;
 	margin:0px auto;
 	border-width:9px;
 	padding: 15px 0px;
 	line-height:70px;
 	letter-spacing:2px;
 	font-size:80px;
+	margin-top:-35px;
 }
 
 .touch

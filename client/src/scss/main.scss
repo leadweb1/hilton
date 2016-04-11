@@ -10,20 +10,20 @@ $fa-font-path: "/src/vendor/font-awesome/fonts";
 @import "../vendor/font-awesome/scss/font-awesome";
 
 @font-face {
-    font-family: 'JFCalibreRegular';
-    src: url('../assets/_FONT/JFCalibre-Regular.ttf');
+    font-family: 'GothamBlack';
+    src: url('../assets/_FONT/Gotham-Black.ttf');
 }
 @font-face {
-    font-family: 'JFCalibreMedium';
-    src: url('../assets/_FONT/JFCalibre-Medium.ttf');
+    font-family: 'GothamBook';
+    src: url('../assets/_FONT/Gotham-Book.ttf');
 }
 @font-face {
-    font-family: 'JFCalibreBold';
-    src: url('../assets/_FONT/JFCalibre-Bold.ttf');
+    font-family: 'GothamBold';
+    src: url('../assets/_FONT/Gotham-Medium.ttf');
 }
 
 html, body, div, button, input, select, textarea, .pure-g [class*="pure-u"] {
-    font-family: 'JFCalibreMedium';
+    font-family: 'GothamBold';
 }
 
 body{
