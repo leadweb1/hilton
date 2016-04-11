@@ -29,9 +29,9 @@ angular.module('app').factory('cardData', function(){
 	        ],
 	        copy : [
 	          'Use the HHonors App to choose your preferred room before arrival.',
-	          'Check in online with the HHonors App and head straight to your room upon arrival',
+	          'Check in online with the HHonors App and head straight to your room upon arrival.',
 	          'Hilton HHonors ® rewards your loyalty with upgrades and free stays.',
-	          'Stay connected with free Wi-Fi when you book direct at Hilton.com',
+	          'Stay connected with free Wi-Fi when you book direct at Hilton.com.',
 	          'Always find the lowest price on Hilton.com or we\'ll give you $50.'
 	        ]
       };

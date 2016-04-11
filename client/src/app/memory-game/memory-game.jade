@@ -1,5 +1,5 @@
 .app
-	.visible#visible(ng-click="toggleVisible()")
+	.visible#visible(ng-click="toggleVisible(); submissionAction('click', 'action', 'user_closed_overlay')", )
 		.instructions-back
 		.fixed-instruction
 			.fixed-top-left-home-btn(ng-click="goHome()", ng-src="assets/images/btns/home.png") 
@@ -10,21 +10,21 @@
 				.instructions-title
 					b.black {{game_prompt}}
 				.instructions {{instructions}}
-				img.go-to-game-btn(ng-src="assets/BUTTONS/start.png")
+				img.go-to-game-btn(ng-src="assets/BUTTONS/start.png", ng-click="submissionAction('click', 'action', 'user_closed_rules')")
 			.white-copy(ng-show="showCopyIdle()")
 				img.instructions-title-image.idle-image(ng-src="assets/ICONS/clock.png")
 				.instructions Are you still there? Touch anywhere to keep playing.
 				.subinstructions The screen will go back home in 10.
 	.hilton-background-image(ng-click="resetIdle()")
-		.fixed-top-left-home-btn(ng-click="goHome()", ng-src="assets/images/btns/home.png") 
+		.fixed-top-left-home-btn(ng-click="goHome(); submissionAction('click', 'action', 'go_home')", ng-src="assets/images/btns/home.png") 
 			img(ng-src="assets/ICONS/rules.png") 
 			.inline.btn-text  HOME 
 		.fixed-top-left-home-btn.top-right(ng-click="toggleVisible()", ng-src="assets/images/btns/home.png") 
 			img.inline(ng-src="assets/ICONS/rules.png") 
-			.inline.btn-text  RULES
+			.inline.btn-text(ng-click="submissionAction('click', 'action', 'rules')")  RULES
 		.cards
 			.flip(ng-repeat="card in cards track by $index")
-				.card(id="{{$index}}", ng-click="cardFlipped($index)")
+				.card(id="{{$index}}", ng-click="cardFlipped($index); submissionAction('click', 'action', 'card_flipped')")
 					.face.front
 						img.card-img(src="assets/CARDS/verso.jpg")
 					.face.back

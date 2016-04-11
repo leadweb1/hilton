@@ -73,7 +73,6 @@
     // called when a card is flipped by the user
    $scope.cardFlipped = function(index)
    {
-        console.log('flipped at ' + index);
         $scope.resetIdle();
 
         if($scope.flipped === 2 || $scope.cards[index].isFlipped){// dont allow any more cards to flip because 2 are already flipped!
@@ -91,7 +90,7 @@
           {
             $scope.cards[index].matched = true;
             $scope.cards[i].matched = true;
-            $scope.copy = $sce.trustAsHtml($scope.cardImages.copy[Math.floor(i/2)]);
+            $scope.copy = $sce.trustAsHtml($scope.cardImages.copy[$scope.cards[index].id]);
             $scope.score = $scope.score + 1;
           }
         }
@@ -147,10 +146,11 @@
 
    $rootScope.localIdleTimeout = function()
    {
-    console.log('user has been idle for 10 seconds');
+    
     $scope.idleBool = true;
     if(!$scope.instructionsBool){
       $scope.toggleVisible();
+      $rootScope.submissionAction('click', 'action', 'user_went_idle')
     }
    };
 
@@ -161,11 +161,12 @@
 
    $state.playAgain = function()
    {
+    submissionAction('click', 'action', 'user_clicked_play_again')
     $state.go('memory;');
    };
 
    setInterval(function(){
-      console.log($rootScope.localIdle);
+    console.log($rootScope.localIdle);
         if($scope.instructionsBool){
           $rootScope.localIdle = 0;
         }else if($rootScope.localIdle >= $scope.ms_timeout){
@@ -189,6 +190,7 @@
           }
           if(matched === $scope.cards.length){
             setTimeout(function(){
+              $rootScope.submissionAction('click', 'action', 'user_won')
               $state.go('root.win');
             }, 500);
             

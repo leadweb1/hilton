@@ -1,1 +1,0 @@
-<div class="app"><div ui-sref="root.home" class="hilton-background blue-gradient"><div class="call-to-action">TAP TO BEGIN</div></div></div>
