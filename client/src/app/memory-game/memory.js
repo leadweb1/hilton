@@ -150,7 +150,7 @@
     $scope.idleBool = true;
     if(!$scope.instructionsBool){
       $scope.toggleVisible();
-      $rootScope.submissionAction('click', 'action', 'user_went_idle')
+      $rootScope.submissionAction('click', 'action', 'user_went_idle');
     }
    };
 
@@ -161,7 +161,7 @@
 
    $state.playAgain = function()
    {
-    submissionAction('click', 'action', 'user_clicked_play_again')
+    $rootScope.submissionAction('click', 'action', 'user_clicked_play_again');
     $state.go('memory;');
    };
 
@@ -190,7 +190,7 @@
           }
           if(matched === $scope.cards.length){
             setTimeout(function(){
-              $rootScope.submissionAction('click', 'action', 'user_won')
+              $rootScope.submissionAction('click', 'action', 'user_won');
               $state.go('root.win');
             }, 500);
             
