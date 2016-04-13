@@ -6,7 +6,7 @@
 
 var appConfig = {
   clientId: 'DAVID-DEV',
-  timeout :  60,
+  timeout :  30,
   project : 'hilton',
   gaUa    : 'UA-64984920-2',
   postUrl : 'http://astral-analytics.picard.lead-web.com/post-session',

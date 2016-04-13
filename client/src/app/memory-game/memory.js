@@ -22,7 +22,7 @@
    * @name  HomeController
    * @description Controller
    */
-  function MemoryController($scope, $state, cardData, $rootScope, $sce) {
+  function MemoryController($scope, $state, cardData, $rootScope, $sce, $location, Idle) {
 
     //used to toggle view visibility
     $scope.instructionsBool = true;
@@ -39,6 +39,11 @@
     // Initialize our scope flipped val to show that we start with 0 cards flipped up
     $scope.flipped = 0;
     $rootScope.localIdle = 0;
+    $scope.countdown = 10;
+
+    if(Idle.running() === true) {
+        Idle.unwatch();
+    }
 
 
     // Switches the opacity and hidden attribute of the fixed instructions panel
@@ -140,6 +145,7 @@
 
    $scope.resetIdle = function()
    {
+    console.log('reset idle')
       $rootScope.localIdle = 0;
       $scope.idleBool = false;
    };
@@ -165,20 +171,24 @@
     $state.go('memory;');
    };
 
-   setInterval(function(){
-    console.log($rootScope.localIdle);
-        if($scope.instructionsBool){
-          $rootScope.localIdle = 0;
-        }else if($rootScope.localIdle >= $scope.ms_timeout){
+   var myvar = setInterval(function(){
+        if($rootScope.localIdle >= $scope.ms_timeout + 10000)
+        {
+            $location.url('/begin')
+            $scope.$apply();
+            clearTimeout(myvar);
+        }else if($rootScope.localIdle >= $scope.ms_timeout && !$scope.idleBool){
           $rootScope.localIdleTimeout();
+        }else if($rootScope.localIdle >= $scope.ms_timeout && $scope.idleBool){
+            $rootScope.localIdle += 100;
+            $scope.countdown = Math.floor((10000 + ($scope.ms_timeout - $rootScope.localIdle)) / 1000) + 1;
+            $scope.$apply();
         }else{
           $rootScope.localIdle += 100;
         }
-
         if($scope.flipped !== 2){
           return;
         }
-        
         $scope.timeout();
 
           var matched = 0;
@@ -188,11 +198,12 @@
               matched = matched  + 1;
             }
           }
-          if(matched === $scope.cards.length){
+        if(matched === $scope.cards.length){
             setTimeout(function(){
               $rootScope.submissionAction('click', 'action', 'user_won');
               $state.go('root.win');
-            }, 500);
+              clearTimeout(myvar);
+            }, 3000);
             
           }
    }, 100);

@@ -22,9 +22,12 @@
    * @name  SplashController
    * @description Controller
    */
-  function SplashController(data, $scope, $state) {
+  function SplashController(data, $scope, $state, $rootScope, Idle) {
     $scope.data = data;
-
+    $rootScope.localIdle = 0;
+    if(Idle.running() !== true) {
+        Idle.watch();
+    }
     $scope.goToGame = function()
     {
       $state.go('memory');

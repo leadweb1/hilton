@@ -22,9 +22,11 @@
    * @name  SplashController
    * @description Controller
    */
-  function WinController($state, $scope) {
+  function WinController($state, $scope, Idle) {
 
-
+    if(Idle.running() !== true) {
+        Idle.watch();
+    }
 
     $scope.goHome = function()
     {

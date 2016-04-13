@@ -12,11 +12,11 @@ angular.module('app').factory('cardData', function(){
 	          'assets/CARDS/card_5.jpg',
 	        ],
 	        copy : [
-	          'Hilton Whistler Resort & Spa is just steps to the chairlifts of the legendary Whistler & Blackcomb Mountains.',
-	          'From shopping to entertainment, the best of the Big Apple is a short distance from New York Hilton Midtown.',
-	          'Immerse yourself in the charm of Old Town, a short distance from Hilton Quebec.',
-	          'During your stay at Hilton Lac-Leamy, try your luck at the connected Casino du Lac-Leamy.',
-	          'The Hilton Hawaiian Village © Waikiki Beach Resort spans 22 acres of oceanfront paradise.'
+	          'Hilton Whistler Resort & Spa is just steps to the chairlifts of the legendary Whistler &\u00A0Blackcomb\u00A0Mountains.',
+	          'From shopping to entertainment, the best of the Big Apple is a short distance from New York\u00A0Hilton\u00A0Midtown.',
+	          'Immerse yourself in the charm of Old Town, a short distance from\u00A0Hilton\u00A0Quebec.',
+	          'During your stay at Hilton Lac-Leamy, try your luck at the connected Casino\u00A0du\u00A0Lac-Leamy.',
+	          'The Hilton Hawaiian Village © Waikiki Beach Resort spans 22 acres of\u00A0oceanfront\u00A0paradise.'
 	        ]
       };
       Service.cardImageSetTwo = {
@@ -28,11 +28,11 @@ angular.module('app').factory('cardData', function(){
 	          'assets/CARDS/card_lowestprice.jpg',
 	        ],
 	        copy : [
-	          'Use the HHonors App to choose your preferred room before arrival.',
-	          'Check in online with the HHonors App and head straight to your room upon arrival.',
-	          'Hilton HHonors ® rewards your loyalty with upgrades and free stays.',
-	          'Stay connected with free Wi-Fi when you book direct at Hilton.com.',
-	          'Always find the lowest price on Hilton.com or we\'ll give you $50.'
+	          'Use the HHonors App to choose your preferred room\u00A0before\u00A0arrival.',
+	          'Check in online with the HHonors App and head straight to your room\u00A0upon\u00A0arrival.',
+	          'Hilton HHonors ® rewards your loyalty with upgrades and\u00A0free\u00A0stays.',
+	          'Stay connected with free Wi-Fi when you book direct\u00A0at\u00A0Hilton.com.',
+	          'Always find the lowest price on Hilton.com or we\'ll give\u00A0you\u00A0$50.'
 	        ]
       };
      Service.initCardSet = function()
