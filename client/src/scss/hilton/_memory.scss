@@ -38,10 +38,14 @@ $border-rad: 34px;
   margin-left:550px;
   font-size:36px;
   line-height:55px;
-  // border: 2px solid #C2EBFD;
-text-shadow: 0px 0px 20px #FFFFFF;
-transition-duration:0.5s;
+  transition-duration:0.5s;
+  -webkit-transition-timing-function: ease; /* Safari and Chrome */
+  transition-timing-function: ease;
+}
 
+.copy-sparkle
+{
+  text-shadow: 0px 0px 3px #C2EBFD , 0px 0px 20px #FFFFFF, 0px 0px 20px #FFFFFF ;
 }
 
 .visible

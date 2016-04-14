@@ -1,8 +1,8 @@
 .app
 	.visible#visible(ng-click="toggleVisible(); submissionAction('click', 'action', 'user_closed_overlay')", )
 		.instructions-back
-		.fixed-instruction
-			.fixed-top-left-home-btn(ng-click="goHome(); submissionAction('click', 'action', 'go_home')", ng-src="assets/images/btns/home.png") 
+		.fixed-instruction(ng-click="resetIdle()")
+			.fixed-top-left-home-btn(ng-click="stopIdle(); goHome(); submissionAction('click', 'action', 'go_home')", ng-src="assets/images/btns/home.png") 
 				img(ng-src="assets/ICONS/home.png") 
 				.inline.btn-text  HOME
 			.white-copy(ng-if="!idleBool")
@@ -11,12 +11,12 @@
 					b.black {{game_prompt}}
 				.instructions {{instructions}}
 				img.go-to-game-btn(ng-src="assets/BUTTONS/start.png", ng-click="submissionAction('click', 'action', 'user_closed_rules')")
-			.white-copy(ng-show="showCopyIdle()")
-				img.instructions-title-image.idle-image(ng-src="assets/ICONS/clock.png")
+			.white-copy(ng-show="showCopyIdle()", ng-click="resetIdle()")
+				img.instructions-title-image.idle-image(ng-src="assets/ICONS/clock.png", ng-click="resetIdle()")
 				.instructions Are you still there? Touch anywhere to keep playing.
 				.subinstructions The screen will go back home in {{countdown}}.
 	.hilton-background-image(ng-click="resetIdle()")
-		.fixed-top-left-home-btn(ng-click="goHome(); submissionAction('click', 'action', 'go_home')", ng-src="assets/images/btns/home.png") 
+		.fixed-top-left-home-btn(ng-click="stopIdle(); goHome(); submissionAction('click', 'action', 'go_home')", ng-src="assets/images/btns/home.png") 
 			img(ng-src="assets/ICONS/home.png") 
 			.inline.btn-text  HOME 
 		.fixed-top-left-home-btn.top-right(ng-click="toggleVisible()", ng-src="assets/images/btns/home.png") 

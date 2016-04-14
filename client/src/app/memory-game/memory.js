@@ -51,7 +51,6 @@
     $scope.toggleVisible = function()
     {
       $scope.$apply();
-      console.log($scope.idleBool);
       if($scope.instructionsBool){
         $('.instructions-back').css('opacity', '0.0');
         $('.fixed-instruction').css('opacity', '0.0');
@@ -75,6 +74,11 @@
       // $scope.toggleIdle();
     };
 
+    $scope.toggleSparkle = function()
+    {
+      $('.copy').toggleClass('copy-sparkle');
+    };
+
     // called when a card is flipped by the user
    $scope.cardFlipped = function(index)
    {
@@ -96,6 +100,8 @@
             $scope.cards[index].matched = true;
             $scope.cards[i].matched = true;
             $scope.copy = $sce.trustAsHtml($scope.cardImages.copy[$scope.cards[index].id]);
+            $scope.toggleSparkle();
+            $scope.sparkleDelayedOff();
             $scope.score = $scope.score + 1;
           }
         }
@@ -127,7 +133,6 @@
 
    $scope.showCopyInstructions = function()
    {
-    console.log('idle bool is: ' + $scope.idleBool);
     if($scope.idleBool){
       return false;
     }else{
@@ -145,7 +150,6 @@
 
    $scope.resetIdle = function()
    {
-    console.log('reset idle')
       $rootScope.localIdle = 0;
       $scope.idleBool = false;
    };
@@ -174,7 +178,7 @@
    var myvar = setInterval(function(){
         if($rootScope.localIdle >= $scope.ms_timeout + 10000)
         {
-            $location.url('/begin')
+            $location.url('/begin');
             $scope.$apply();
             clearTimeout(myvar);
         }else if($rootScope.localIdle >= $scope.ms_timeout && !$scope.idleBool){
@@ -207,6 +211,18 @@
             
           }
    }, 100);
+
+  $scope.stopIdle = function(){
+    clearTimeout(myvar);
+  };
+
+  $scope.sparkleDelayedOff = function()
+  {
+    setTimeout(function(){
+      $scope.toggleSparkle();
+    }, 600);
+  };
+
 
    $scope.cards = cardData.init();
    

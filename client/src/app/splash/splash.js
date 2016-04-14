@@ -22,8 +22,7 @@
    * @name  SplashController
    * @description Controller
    */
-  function SplashController(data, $scope, $state, $rootScope, Idle) {
-    $scope.data = data;
+  function SplashController($scope, $state, $rootScope, Idle) {
     $rootScope.localIdle = 0;
     if(Idle.running() !== true) {
         Idle.watch();
